@@ -1,0 +1,20 @@
+{
+    "name": "telepay/sdk-telepay-php",
+    "description": "Library to receive payments with TelePay",
+    "keywords": ["telepay", "payments", "rest", "sdk", "toncoin"],
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "TelePay\\": "src",
+            "Examples\\":"examples/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Raubel",
+            "email": "raubel1993@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
