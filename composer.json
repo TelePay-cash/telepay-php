@@ -3,6 +3,7 @@
     "description": "Library to receive payments with TelePay",
     "keywords": ["telepay", "payments", "rest", "sdk", "toncoin"],
     "type": "library",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "TelePay\\": "src",
@@ -15,7 +16,6 @@
             "email": "raubel1993@gmail.com"
         }
     ],
-    "minimum-stability": "stable",
     "require": {
         "php": ">=7.0"
     }
