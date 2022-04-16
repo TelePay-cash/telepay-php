@@ -1,5 +1,5 @@
 {
-    "name": "telepay/sdk-telepay-php",
+    "name": "telepaycash/sdk-telepay-php",
     "description": "Library to receive payments with TelePay",
     "keywords": ["telepay", "payments", "rest", "sdk", "toncoin"],
     "type": "library",
