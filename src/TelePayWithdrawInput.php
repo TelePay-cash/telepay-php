@@ -2,11 +2,30 @@
 
 namespace TelePay;
 
+/**
+ * This class is the input to create a new withdraw.
+ */
 class TelePayWithdrawInput extends TelePayBaseInput
 {
+    /**
+     * @var string address of destiny of the withdraw
+     */
     private $to_address;
+
+    /** 
+     * @var string|null message of the withdraw 
+     */
     private $message;
 
+    /**
+     * Constructor.
+     * 
+     * @param string asset
+     * @param string blockchain
+     * @param string network
+     * @param double amount
+     * @param string to_address
+     */
     public function __construct($asset, $blockchain, $network, $amount, $to_address)
     {
         parent::__construct($asset, $blockchain, $network, $amount);

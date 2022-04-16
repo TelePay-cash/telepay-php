@@ -2,13 +2,30 @@
 
 namespace TelePay;
 
+/**
+ * TelePayBaseInput is the base class for all input classes when asset, blockchain, network and amount are required.
+ */
 abstract class TelePayBaseInput
 {
+    /** @var string $asset*/
     protected $asset;
+
+    /** @var string $blockchain*/
     protected $blockchain;
+
+    /** @var string $network*/
     protected $network;
+
+    /** @var double $amount*/
     protected $amount;
 
+    /**
+     * Construct
+     * @param string $asset
+     * @param string $blockchain
+     * @param string $network
+     * @param double $amount
+     */
     public function __construct($asset, $blockchain, $network, $amount)
     {
         $this->setAsset($asset);

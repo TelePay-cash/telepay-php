@@ -11,7 +11,7 @@ $clientSecret = "YOUR SECRET";
 
 $telepay = new TelePayClient(new TelePayEnvironment($clientSecret));
 
-$transfer = new TelePayTransferInput("TON", "TON", "testnet", "0.2", "lugodev");
+$transfer = new TelePayTransferInput("TON", "TON", "mainnet", "0.00001", "raubel1993");
 $transfer->setMessage("Debt settled");
 
 $respTransfer= $telepay->transfer($transfer);

@@ -11,7 +11,7 @@ $clientSecret = "YOUR SECRET";
 
 $telepay = new TelePayClient(new TelePayEnvironment($clientSecret));
 
-$withdraw = new TelePayWithdrawInput("TON", "TON", "testnet", "0.2", "EQA5Pxp_EC9pTlxrvO59D1iqBqodajojullgf07ENKa22oSN");
+$withdraw = new TelePayWithdrawInput("TON", "TON", "mainnet", "0.2", "EQA5Pxp_EC9pTlxrvO59D1iqBqodajojullgf07ENKa22oSN");
 $withdraw->setMessage("for my savings account");
 
 $respWithdrawFee = $telepay->getWithdrawFee($withdraw);

@@ -153,7 +153,7 @@ class TelePayClient
      * @param string $blockchain
      * @param string $network
      * @return void
-     * @throws Exception
+     * @throws TelePayException
      */
     public function validate($asset, $blockchain, $network)
     {
@@ -174,7 +174,7 @@ class TelePayClient
             }
         }
         if (!$combinationExist) {
-            throw new \Exception("The combination of asset $asset, blockchain $blockchain and network $network does not exist");
+            throw new TelePayException("The combination of asset $asset, blockchain $blockchain and network $network does not exist");
         }
     }
 
@@ -197,7 +197,7 @@ class TelePayClient
         $httpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
         curl_close($curl);
         if ($httpCode != 200 && $httpCode != 201) {
-            throw new \Exception("Error: " . $httpCode . " - " . $response);
+            throw new TelePayException("Error: " . $httpCode . " - " . $response);
         }
         return json_decode($response, true);
     }

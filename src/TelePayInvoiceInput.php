@@ -2,14 +2,44 @@
 
 namespace TelePay;
 
+/**
+ * This class is the input to create a new invoice.
+ */
 class TelePayInvoiceInput  extends TelePayBaseInput
 {
+    /** 
+     * @var string|null Description of the invoice 
+     */
     private $description;
+
+    /** 
+     * @var array|null metadata of the invoice 
+     */
     private $metadata;
+
+    /** 
+     * @var string|null success_url is the url to redirect when the payment is successful 
+     */
     private $success_url;
+
+    /** 
+     * @var string|null cancel_url is the url to redirect when the payment is canceled 
+     */
     private $cancel_url;
+
+    /** 
+     * @var int invoice expire time after created
+     */
     private $expires_at;
 
+    /**
+     * Constructor.
+     * 
+     * @param string $asset
+     * @param string $blockchain
+     * @param string $network
+     * @param double $amount
+     */
     public function __construct($asset, $blockchain, $network, $amount)
     {
         parent::__construct($asset, $blockchain, $network, $amount);

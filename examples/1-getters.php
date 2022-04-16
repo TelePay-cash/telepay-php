@@ -12,13 +12,46 @@ $environment = new TelePayEnvironment($clientSecret);
 $telepay = new TelePayClient($environment);
 
 $me = $telepay->getMe();
-print_r($me);
+$merchant = $me['merchant'];
+$merchantName = $merchant['name'];
+$merchantUrl = $merchant['url'];
+$merchantUsername = $merchant['username'];
+$merchantPublicProfile = $merchant['public_profile'];
 
 $balance = $telepay->getBalance();
-print_r($balance);
+$wallets = $balance['wallets'];
+echo "My wallets: \n";
+foreach ($wallets as $wallet) {
+    echo "Asset:  ".$wallet['asset']
+        ." Blockchain: ".$wallet['blockchain']
+        ." Networks: ".$wallet['network']
+        ." balance: ".$wallet['balance']
+        ."\n";
+}
 
-$assets = $telepay->getAssets();
-print_r($assets);
+$assetsResponse = $telepay->getAssets();
+$assets = $assetsResponse['assets'];
+echo "Assets: \n";
+foreach ($assets as $assetItem) {
+    $row = "Asset:  ".$assetItem['asset']
+        ." Blockchain: ".$assetItem['blockchain']
+        ." Networks: ";
+    foreach ($assetItem['networks'] as $networkItem) {
+        $row .= "$networkItem ";
+    }
+    echo $row."\n";
+}
 
-$invoices = $telepay->getInvoices();
-print_r($invoices);
+$invoicesResponse = $telepay->getInvoices();
+$invoices = $invoicesResponse['invoices'];
+echo "My invoices: \n";
+foreach ($invoices as $invoice) {
+    echo "Number:  ".$invoice['number']."\n"
+        ." description: ".$invoice['description']."\n"
+        ."Asset:  ".$invoice['asset']."\n"
+        ." Blockchain: ".$invoice['blockchain']."\n"
+        ." Networks: ".$invoice['network']."\n"
+        ." status: ".$invoice['status']."\n"
+        ." amount: ".$invoice['amount']."\n"
+        ."\n";
+}

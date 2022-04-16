@@ -12,8 +12,7 @@ $orderId = 56;
 
 $telepay = new TelePayClient(new TelePayEnvironment($clientSecret));
 
-
-$invoice = new TelePayInvoiceInput("TON", "TON", "testnet", "0.2");
+$invoice = new TelePayInvoiceInput("TON", "TON", "mainnet", "0.00005");
 $invoice->setDescription("Test using SDK TelePay PHP");
 $invoice->setMetadata([
     "my_reference_id" => $orderId,
@@ -23,4 +22,8 @@ $invoice->setSuccessUrl("https://www.example.com/payment_success?order_id=$order
 $invoice->setCancelUrl("https://www.example.com/payment_cancelled?order_id=$orderId");
 
 $respCreateInvoice = $telepay->createInvoice($invoice);
+$invoiceNumber = $respCreateInvoice['number'];
 print_r($respCreateInvoice);
+
+$respGetInvoice = $telepay->getInvoice($invoiceNumber);
+print_r($respGetInvoice);
