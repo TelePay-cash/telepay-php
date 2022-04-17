@@ -142,7 +142,6 @@ Array
     [status] => pending
     [amount] => 0.000050000000000000
     [description] => Test using SDK TelePay PHP
-    [hidden_message] => 
     [metadata] => Array
         (
             [my_reference_id] => 56
@@ -171,6 +170,54 @@ $invoiceNumber = "UIOAXSSFNB";
 $respGetInvoice = $telepay->getInvoice($invoiceNumber);
 ```
 
+**Cancel invoice**
+```php
+$invoiceNumber = "8N1DLRKV5S";
+$respCancelInvoice = $telepay->cancelInvoice($invoiceNumber);
+print_r($respCancelInvoice);
+```
+Response
+```php
+Array
+(
+    [number] => 8N1DLRKV5S
+    [asset] => TON
+    [blockchain] => TON
+    [network] => mainnet
+    [status] => cancelled
+    [amount] => 0.000050000000000000
+    [description] => Test using SDK TelePay PHP
+    [metadata] => Array
+        (
+            [other_metadata] => any value
+            [my_reference_id] => 56
+        )
+
+    [checkout_url] => https://telepay.cash/checkout/8N1DLRKV5S
+    [success_url] => https://www.example.com/payment_success?order_id=56
+    [cancel_url] => https://www.example.com/payment_cancelled?order_id=56
+    [explorer_url] => 
+    [expires_at] => 2022-04-17T13:08:49.524066Z
+    [created_at] => 2022-04-17T03:08:49.524177Z
+    [updated_at] => 2022-04-17T03:08:50.655271Z
+)
+
+```
+
+**Delete invoice**
+```php
+$invoiceNumber = "8N1DLRKV5S";
+$respDeleteInvoice = $telepay->deleteInvoice($invoiceNumber);
+print_r($respDeleteInvoice);
+```
+Response
+```php
+Array
+(
+    [status] => deleted
+)
+```
+
 **Transfer**
 ```php
 $transfer = new TelePayTransferInput("TON", "TON", "mainnet", "0.00005", "raubel1993");
@@ -190,13 +237,25 @@ Array
 
 **Withdraw and Fee**
 ```php
-$withdraw = new TelePayWithdrawInput("TON", "TON", "mainnet", "0.2", "EQA5Pxp_EC9pTlxrvO59D1iqBqodajojullgf07ENKa22oSN");
+$withdraw = new TelePayWithdrawInput("TON", "TON", "mainnet", "0.2", "EQCwLtwjII1yBfO3m6T9I7__6CUXj60ZFmN3Ww2aiLQLicsO");
 $withdraw->setMessage("for my savings account");
 
 $respWithdrawFee = $telepay->getWithdrawFee($withdraw);
+print_r($respWithdrawFee);
+```
+Response
+```php
+Array
+(
+    [blockchain_fee] => 0.001824
+    [processing_fee] => 0.01
+    [total] => 0.011824
+)
+```
 
-
+```php
 $respWithdraw = $telepay->withdraw($withdraw);
+print_r($respWithdraw);
 ```
 
 ## Contributors ✨
