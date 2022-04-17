@@ -7,7 +7,7 @@ TelePay client library for the PHP language, so you can easely process cryptocur
 Install the package with composer:
 
 ```bash
-composer install telepay
+composer require telepaycash/sdk-telepay-php
 ```
 
 ## Using the library
