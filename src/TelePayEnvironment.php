@@ -3,16 +3,11 @@ namespace TelePay;
 
 class TelePayEnvironment
 {
-    private $clientId;
     private $clientSecret;
 
     public function __construct($clientSecret)
     {
         $this->clientSecret = $clientSecret;
-    }
-    public function getClientId()
-    {
-        return $this->clientId;
     }
     public function getClientSecret()
     {
