@@ -174,7 +174,11 @@ class TelePayClient
             }
         }
         if (!$combinationExist) {
-            throw new TelePayException("The combination of asset $asset, blockchain $blockchain and network $network does not exist");
+            throw new TelePayException(
+                "The combination of asset $asset, blockchain $blockchain and network $network does not exist",
+                401,
+                "INVALID_ASSET_BLOCKCHAIN_NETWORK_COMBINATION"
+            );
         }
     }
 
@@ -193,12 +197,15 @@ class TelePayClient
             curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($body));
         }
         curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $verb);
-        $response = curl_exec($curl);
+        $response = json_decode(curl_exec($curl), true);
         $httpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
         curl_close($curl);
         if ($httpCode != 200 && $httpCode != 201) {
-            throw new TelePayException("Error: " . $httpCode . " - " . $response);
+            if (isset($response['error'])) {
+                throw new TelePayException($response['message'], $httpCode, $response['error']);
+            }
+            throw new TelePayException(json_encode($response), $httpCode);
         }
-        return json_decode($response, true);
+        return $response;
     }
 }

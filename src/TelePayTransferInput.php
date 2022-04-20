@@ -46,11 +46,11 @@ class TelePayTransferInput extends TelePayBaseInput
         return $body;
     }
 
-    public function getUserName()
+    public function getUsername()
     {
         return $this->username;
     }
-    public function setUserName($username)
+    public function setUsername($username)
     {
         $this->username = $username;
     }
