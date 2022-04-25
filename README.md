@@ -258,6 +258,13 @@ $respWithdraw = $telepay->withdraw($withdraw);
 print_r($respWithdraw);
 ```
 
+## Tests
+All endpoint responses were tested.
+To run the tests yourself, you need your TelePay merchant secret with at least 3 testnet toncoins, a Telepay user who will receive the test transfer, and a testnet wallet who will receive the test withdraw.
+```bash
+TELEPAY_SECRET= USERNAME_TELEPAY_TRANSFER= WHITDRAW_TO_WALLET=  composer tests
+```
+
 ## Contributors ✨
 
 The library is made by ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
