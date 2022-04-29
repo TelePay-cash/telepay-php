@@ -144,7 +144,7 @@ class TelePayClient
         $this->validate($withdraw->getAsset(), $withdraw->getBlockchain(), $withdraw->getNetwork());
         $url = $this->environment->getBaseUrl() . "withdraw";
         $withdrawBody = $withdraw->getBodyPrepared();
-        set_time_limit(90);
+        set_time_limit(60);
         $response = $this->makeRequest($url, $withdrawBody, "POST");
         return $response;
     }
