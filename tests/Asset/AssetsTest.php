@@ -31,11 +31,9 @@ class AssetsTest extends TestCase
             $this->assertNotNull($asset['url']);
 
             $this->assertArrayHasKey('networks', $asset);
-            $this->assertNotNull($asset['networks']);
 
             $networks = $asset['networks'];
             $this->assertIsArray($networks);
-            $this->assertGreaterThanOrEqual(1, count($networks));
             foreach ($networks as $network) {
                 $this->assertIsString($network);
             }

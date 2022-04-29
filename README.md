@@ -235,7 +235,23 @@ Array
 ```
 [Read docs](https://telepay.readme.io/reference/transfer)
 
-**Withdraw and Fee**
+**Withdraw minimum**
+```php
+$withdrawMinimum = new TelePayWithdrawMinimumInput("TON", "TON", "mainnet");
+
+$respWithdrawMinimum = $telepay->getWithdrawFee($withdrawMinimum);
+print_r($respWithdrawMinimum);
+```
+Response
+```php
+Array
+(
+    [withdraw_minimum] => 0.2
+)
+```
+
+
+**Withdraw Fee**
 ```php
 $withdraw = new TelePayWithdrawInput("TON", "TON", "mainnet", "0.2", "EQCwLtwjII1yBfO3m6T9I7__6CUXj60ZFmN3Ww2aiLQLicsO");
 $withdraw->setMessage("for my savings account");
@@ -253,9 +269,20 @@ Array
 )
 ```
 
+**Withdraw**
 ```php
+$withdraw = new TelePayWithdrawInput("TON", "TON", "mainnet", "0.2", "EQCwLtwjII1yBfO3m6T9I7__6CUXj60ZFmN3Ww2aiLQLicsO");
+$withdraw->setMessage("for my savings account");
+
 $respWithdraw = $telepay->withdraw($withdraw);
 print_r($respWithdraw);
+```
+Response
+```php
+Array
+(
+    [success] => 1
+)
 ```
 
 ## Tests

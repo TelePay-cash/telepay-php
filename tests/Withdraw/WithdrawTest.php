@@ -6,6 +6,7 @@ use Test\TestInit;
 use TelePay\TelePayException;
 use PHPUnit\Framework\TestCase;
 use TelePay\TelePayWithdrawInput;
+use TelePay\TelePayWithdrawMinimumInput;
 
 class WithdrawTest extends TestCase
 {
@@ -19,6 +20,36 @@ class WithdrawTest extends TestCase
     {
         $wallet = getenv("WHITDRAW_TO_WALLET")  ?: "WHITDRAW_TO_WALLET";
         return $wallet;
+    }
+
+    public function testWithdrawMinimumSuccessfull()
+    {
+        $telepay = TestInit::client();
+
+        $withdrawMinimum = new TelePayWithdrawMinimumInput($this->asset, $this->blockchain, $this->network);
+
+        $respWithdrawMinimum = $telepay->getWithdrawMinimum($withdrawMinimum);
+
+        $this->assertNotNull($respWithdrawMinimum);
+        $this->assertArrayHasKey('withdraw_minimum', $respWithdrawMinimum);
+        $this->assertNotNull($respWithdrawMinimum['withdraw_minimum']);
+    }
+
+    public function testWithdrawMinimumFail()
+    {
+        $telepay = TestInit::client();
+
+        $unexistentAsset = "UNEXISTENT";
+
+        $withdrawMinimum = new TelePayWithdrawMinimumInput($unexistentAsset, $this->blockchain, $this->network);
+
+        try {
+            $telepay->getWithdrawMinimum($withdrawMinimum);
+            $this->fail('TelePayException was not thrown');
+        } catch (TelePayException $exception) {
+            $this->assertEquals(401, $exception->getStatusCode());
+            $this->assertEquals('INVALID_ASSET_BLOCKCHAIN_NETWORK_COMBINATION', $exception->getError());
+        }
     }
 
     public function testWithdrawFeeSuccessfull()

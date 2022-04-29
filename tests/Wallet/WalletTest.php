@@ -31,7 +31,6 @@ class WalletTest extends TestCase
             $this->assertNotNull($wallet['balance']);
 
             $this->assertArrayHasKey('network', $wallet);
-            $this->assertNotNull($wallet['network']);
         }
     }
 }

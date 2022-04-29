@@ -3,9 +3,9 @@
 namespace TelePay;
 
 /**
- * TelePayBaseInput is the base class for all input classes when asset, blockchain, network and amount are required.
+ * This class is the input to create a new withdraw minimum.
  */
-abstract class TelePayBaseInput
+class TelePayWithdrawMinimumInput
 {
     /** @var string $asset*/
     protected $asset;
@@ -13,25 +13,30 @@ abstract class TelePayBaseInput
     /** @var string $blockchain*/
     protected $blockchain;
 
-    /** @var string||null $network*/
+    /** @var string $network*/
     protected $network;
 
-    /** @var double $amount*/
-    protected $amount;
-
     /**
-     * Construct
-     * @param string $asset
-     * @param string $blockchain
-     * @param string|null $network
-     * @param double $amount
+     * Constructor.
+     * 
+     * @param string asset
+     * @param string blockchain
+     * @param string network
      */
-    public function __construct($asset, $blockchain, $network, $amount)
+    public function __construct($asset, $blockchain, $network)
     {
         $this->setAsset($asset);
         $this->setBlockchain($blockchain);
         $this->setNetwork($network);
-        $this->setAmount($amount);
+    }
+    public function getBodyPrepared()
+    {
+        $body = array(
+            "asset" => $this->asset,
+            "blockchain" => $this->blockchain,
+            "network" => $this->network
+        );
+        return $body;
     }
 
     public function getAsset()
@@ -57,13 +62,5 @@ abstract class TelePayBaseInput
     public function setNetwork($network)
     {
         $this->network = $network;
-    }
-    public function getAmount()
-    {
-        return $this->amount;
-    }
-    public function setAmount($amount)
-    {
-        $this->amount = $amount;
     }
 }

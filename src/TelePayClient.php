@@ -144,6 +144,20 @@ class TelePayClient
         $this->validate($withdraw->getAsset(), $withdraw->getBlockchain(), $withdraw->getNetwork());
         $url = $this->environment->getBaseUrl() . "withdraw";
         $withdrawBody = $withdraw->getBodyPrepared();
+        set_time_limit(90);
+        $response = $this->makeRequest($url, $withdrawBody, "POST");
+        return $response;
+    }
+
+    /**
+     * Withdraw funds from merchant wallet to external wallet. On-chain operation
+     * @param TelePayWithdrawMinimumInput $withdraw
+     */
+    public function getWithdrawMinimum($withdrawMinimum)
+    {
+        $this->validate($withdrawMinimum->getAsset(), $withdrawMinimum->getBlockchain(), $withdrawMinimum->getNetwork());
+        $url = $this->environment->getBaseUrl() . "getWithdrawMinimum";
+        $withdrawBody = $withdrawMinimum->getBodyPrepared();
         $response = $this->makeRequest($url, $withdrawBody, "POST");
         return $response;
     }
