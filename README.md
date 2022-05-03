@@ -5,7 +5,6 @@
 TelePay client library for the PHP language, so you can easely process cryptocurrency payments using the REST API.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-[![Version](https://img.shields.io/pypi/v/telepay?color=%2334D058&label=Version&style=flat-square)](https://pypi.org/project/telepay)
 [![Last commit](https://img.shields.io/github/last-commit/telepay-cash/telepay-php.svg?style=flat-square)](https://github.com/telepay-cash/telepay-php/commits)
 [![GitHub commit activity](https://img.shields.io/github/commit-activity/m/telepay-cash/telepay-php?style=flat-square)](https://github.com/telepay-cash/telepay-php/commits)
 [![Github Stars](https://img.shields.io/github/stars/telepay-cash/telepay-php?style=flat-square&logo=github&)](https://github.com/telepay-cash/telepay-php/stargazers)
