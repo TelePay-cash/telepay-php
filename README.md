@@ -1,6 +1,19 @@
 # PHP SDK for the TelePay API
 
+![TelePay PHP](https://github.com/TelePay-cash/telepay-php/blob/main/docs/cover.jpg?raw=true)
+
 TelePay client library for the PHP language, so you can easely process cryptocurrency payments using the REST API.
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![Version](https://img.shields.io/pypi/v/telepay?color=%2334D058&label=Version&style=flat-square)](https://pypi.org/project/telepay)
+[![Last commit](https://img.shields.io/github/last-commit/telepay-cash/telepay-php.svg?style=flat-square)](https://github.com/telepay-cash/telepay-php/commits)
+[![GitHub commit activity](https://img.shields.io/github/commit-activity/m/telepay-cash/telepay-php?style=flat-square)](https://github.com/telepay-cash/telepay-php/commits)
+[![Github Stars](https://img.shields.io/github/stars/telepay-cash/telepay-php?style=flat-square&logo=github&)](https://github.com/telepay-cash/telepay-php/stargazers)
+[![Github Forks](https://img.shields.io/github/forks/telepay-cash/telepay-php?style=flat-square&logo=github)](https://github.com/telepay-cash/telepay-php/network/members)
+[![Github Watchers](https://img.shields.io/github/watchers/telepay-cash/telepay-php?style=flat-square&logo=github)](https://github.com/telepay-cash/telepay-php)
+[![GitHub contributors](https://img.shields.io/github/contributors/telepay-cash/telepay-php?label=code%20contributors&style=flat-square)](https://github.com/telepay-cash/telepay-php/graphs/contributors)
+[![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?style=flat-squeare&logo=telegram&logoColor=white)](https://t.me/TelePayCash)
+[![Blog](https://img.shields.io/badge/RSS-FFA500?style=flat-square&logo=rss&logoColor=white)](https://blog.telepay.cash)
 
 ## Installation
 
@@ -302,7 +315,7 @@ The library is made by ([emoji key](https://allcontributors.org/docs/en/emoji-ke
 <table>
   <tr>
     <td align="center"><a href="https://www.linkedin.com/in/raubel-guerra-l%C3%B3pez-a8024a1b0/"><img src="https://avatars.githubusercontent.com/u/49169590?v=4" width="100px;" alt=""/><br /><sub><b>Raubel Guerra</b></sub></a><br /><a href="https://github.com/TelePay-cash/telepay-php/commits?author=raubel1993" title="Code">💻</a></td>
-
+    <td align="center"><a href="https://lugodev.com"><img src="https://avatars.githubusercontent.com/u/18733370?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Carlos Lugones</b></sub></a><br /><a href="https://github.com/telepay-cash/telepay-node/commits?author=lugodev" title="Mentoring">🧑‍🏫</a></td>
   </tr>
 </table>
 <!-- markdownlint-restore -->
