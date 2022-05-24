@@ -23,11 +23,13 @@ class TelePayWithdrawMinimumInput
      * @param string blockchain
      * @param string network
      */
-    public function __construct($asset, $blockchain, $network)
+    public function __construct($asset, $blockchain, $network = null)
     {
         $this->setAsset($asset);
         $this->setBlockchain($blockchain);
-        $this->setNetwork($network);
+        if($network) {
+            $this->setNetwork($network);
+        }
     }
     public function getBodyPrepared()
     {

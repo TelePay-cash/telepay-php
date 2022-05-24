@@ -1,4 +1,5 @@
 <?php
+
 namespace TelePay;
 
 class TelePayClient
@@ -174,11 +175,11 @@ class TelePayClient
         $assetsResponse = $this->getAssets();
         $combinationExist = false;
         foreach ($assetsResponse['assets'] as $assetItem) {
-            if($assetItem['asset'] != $asset || $assetItem['blockchain'] != $blockchain) {
+            if ($assetItem['asset'] != $asset || $assetItem['blockchain'] != $blockchain) {
                 continue;
             }
             foreach ($assetItem['networks'] as $networkItem) {
-                if($networkItem == $network) {
+                if ($networkItem == $network) {
                     $combinationExist = true;
                     break;
                 }

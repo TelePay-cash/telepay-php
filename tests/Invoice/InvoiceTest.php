@@ -77,6 +77,9 @@ class InvoiceTest extends TestCase
         $this->assertArrayHasKey('checkout_url', $invoice);
         $this->assertNotNull($invoice['checkout_url']);
 
+        $this->assertArrayHasKey('onchain_url', $invoice);
+        $this->assertNotNull($invoice['onchain_url']);
+
         return $invoice['number'];
     }
 
@@ -152,6 +155,9 @@ class InvoiceTest extends TestCase
         $this->assertArrayHasKey('checkout_url', $invoice);
         $this->assertNotNull($invoice['checkout_url']);
 
+        $this->assertArrayHasKey('onchain_url', $invoice);
+        $this->assertNotNull($invoice['onchain_url']);
+
         return $invoiceNumber;
     }
 
@@ -205,6 +211,9 @@ class InvoiceTest extends TestCase
 
         $this->assertArrayHasKey('checkout_url', $invoice);
         $this->assertNotNull($invoice['checkout_url']);
+
+        $this->assertArrayHasKey('onchain_url', $invoice);
+        $this->assertNotNull($invoice['onchain_url']);
 
 
         $checkInvoice = $telepay->getInvoice($invoiceNumber);

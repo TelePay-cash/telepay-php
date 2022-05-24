@@ -12,7 +12,7 @@ $orderId = 56;
 
 $telepay = new TelePayClient(new TelePayEnvironment($clientSecret));
 
-$invoice = new TelePayInvoiceInput("TON", "TON", "mainnet", "0.00005");
+$invoice = new TelePayInvoiceInput("TON", "TON", "mainnet", "0.5");
 $invoice->setDescription("Test using SDK TelePay PHP");
 $invoice->setMetadata([
     "my_reference_id" => $orderId,

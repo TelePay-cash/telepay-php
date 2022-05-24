@@ -147,12 +147,12 @@ Response
 ```php
 Array
 (
-    [number] => UIOAXSSFNB
+    [number] => O5ZOJ15JXU
     [asset] => TON
     [blockchain] => TON
     [network] => mainnet
     [status] => pending
-    [amount] => 0.000050000000000000
+    [amount] => 0.500000000000000000
     [description] => Test using SDK TelePay PHP
     [metadata] => Array
         (
@@ -160,14 +160,16 @@ Array
             [other_metadata] => any value
         )
 
-    [checkout_url] => https://telepay.cash/checkout/UIOAXSSFNB
+    [checkout_url] => https://telepay.cash/checkout/O5ZOJ15JXU
+    [onchain_url] => ton://transfer/EQA5Pxp_EC9pTlxrvO59D1iqBqodajojullgf07ENKa22oSN?amount=500000000&text=O5ZOJ15JXU
     [success_url] => https://www.example.com/payment_success?order_id=56
     [cancel_url] => https://www.example.com/payment_cancelled?order_id=56
     [explorer_url] => 
-    [expires_at] => 2022-04-16T15:05:29.732789Z
-    [created_at] => 2022-04-16T05:05:29.732885Z
+    [expires_at] => 2022-05-19T08:43:38.802833Z
+    [created_at] => 2022-05-18T22:43:38.802925Z
     [updated_at] => 
 )
+
 ```
 [Read docs](https://telepay.readme.io/reference/createinvoice)
 
@@ -192,26 +194,27 @@ Response
 ```php
 Array
 (
-    [number] => 8N1DLRKV5S
+    [number] => O5ZOJ15JXU
     [asset] => TON
     [blockchain] => TON
     [network] => mainnet
-    [status] => cancelled
-    [amount] => 0.000050000000000000
+    [status] => pending
+    [amount] => 0.500000000000000000
     [description] => Test using SDK TelePay PHP
     [metadata] => Array
         (
-            [other_metadata] => any value
             [my_reference_id] => 56
+            [other_metadata] => any value
         )
 
-    [checkout_url] => https://telepay.cash/checkout/8N1DLRKV5S
+    [checkout_url] => https://telepay.cash/checkout/O5ZOJ15JXU
+    [onchain_url] => ton://transfer/EQA5Pxp_EC9pTlxrvO59D1iqBqodajojullgf07ENKa22oSN?amount=500000000&text=O5ZOJ15JXU
     [success_url] => https://www.example.com/payment_success?order_id=56
     [cancel_url] => https://www.example.com/payment_cancelled?order_id=56
     [explorer_url] => 
-    [expires_at] => 2022-04-17T13:08:49.524066Z
-    [created_at] => 2022-04-17T03:08:49.524177Z
-    [updated_at] => 2022-04-17T03:08:50.655271Z
+    [expires_at] => 2022-05-19T08:43:38.802833Z
+    [created_at] => 2022-05-18T22:43:38.802925Z
+    [updated_at] => 
 )
 
 ```
