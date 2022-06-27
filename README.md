@@ -223,7 +223,6 @@ Array
     [created_at] => 2022-05-18T22:43:38.802925Z
     [updated_at] => 
 )
-
 ```
 
 **Delete invoice**
@@ -236,7 +235,8 @@ Response
 ```php
 Array
 (
-    [status] => deleted
+    [success] => invoice.deleted
+    [message] => Invoice deleted.
 )
 ```
 
@@ -252,7 +252,8 @@ Response
 ```php
 Array
 (
-    [success] => 1
+    [success] => transfer.ok
+    [message] => Transfer performed.
 )
 ```
 [Read docs](https://telepay.readme.io/reference/transfer)
@@ -271,7 +272,6 @@ Array
     [withdraw_minimum] => 0.2
 )
 ```
-
 
 **Withdraw Fee**
 ```php
@@ -317,6 +317,7 @@ Find one webhook by Id. [Read docs](https://telepay.readme.io/reference/getwebho
 ```php
 $webhookId = 325;
 $webhookResponse = $telepay->getWebhook($webhookId);
+print_r($webhookResponse);
 ```
 Response
 ```php
@@ -346,13 +347,11 @@ $eventsWebhook = [
 $webhookInput = new TelePayWebhookInput($urlWebhook, $secretWebhook, $eventsWebhook);
 
 $responseCreateWebhook = $telepay->createWebhook($webhookInput);
-print_r($responseCreateWebhook);
 ```
 For update a webhook is required a webhookId and the new params. [Read docs](https://telepay.readme.io/reference/updatewebhook)
 ```php
 $webhookId = 325;
 $responseUpdateWebhook = $telepay->updateWebhook($webhookId, $webhookInput);
-print_r($responseUpdateWebhook);
 ```
 
 **Activate or deativate a webhook**
