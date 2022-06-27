@@ -13,7 +13,7 @@ class WithdrawTest extends TestCase
     private $asset = "TON";
     private $blockchain = "TON";
     private $network = "testnet";
-    private $amount = "2";
+    private $amount = "1";
     private $message = "for my savings account";
 
     public function getWallet()

@@ -55,6 +55,18 @@ class TelePayClient
     }
 
     /**
+     * Get asset details
+     * @param TelePayAssetInput $asset
+     */
+    public function getAsset($asset)
+    {
+        $url = $this->environment->getBaseUrl() . "getAsset";
+        $assetBody = $asset->getBodyPrepared();
+        $response = $this->makeRequest($url, $assetBody, 'GET');
+        return $response;
+    }
+
+    /**
      * Get your merchant invoices
      */
     public function getInvoices()
@@ -162,6 +174,87 @@ class TelePayClient
         $response = $this->makeRequest($url, $withdrawBody, "POST");
         return $response;
     }
+
+    /**
+     * Get webhooks
+     */
+    public function getWebhooks()
+    {
+        $url = $this->environment->getBaseUrl() . "getWebhooks";
+        $response = $this->makeRequest($url);
+        return $response;
+    }
+
+    /**
+     * Get webhook details
+     * @param int $webhookId
+     */
+    public function getWebhook($webhookId)
+    {
+        $url = $this->environment->getBaseUrl() . "getWebhook/" . $webhookId;
+        $response = $this->makeRequest($url);
+        return $response;
+    }
+
+    /**
+     * Create a new webhook
+     * @param TelePayWebhookInput $webhook
+     */
+    public function createWebhook($webhook)
+    {
+        $url = $this->environment->getBaseUrl() . "createWebhook";
+        $webhookBody = $webhook->getBodyPrepared();
+        $response = $this->makeRequest($url, $webhookBody, "POST");
+        return $response;
+    }
+
+    /**
+     * Update a webhook
+     * @param int $webhookId
+     * @param TelePayWebhookInput $webhook
+     */
+    public function updateWebhook($webhookId, $webhook)
+    {
+        $url = $this->environment->getBaseUrl() . "updateWebhook/" . $webhookId;
+        $webhookBody = $webhook->getBodyPrepared();
+        unset($webhookBody['active']);
+        $response = $this->makeRequest($url, $webhookBody, "POST");
+        return $response;
+    }
+
+    /**
+     * Deletes a webhook
+     * @param int $webhookId
+     */
+    public function deleteWebhook($webhookId)
+    {
+        $url = $this->environment->getBaseUrl() .  "deleteWebhook/" . $webhookId;
+        $response = $this->makeRequest($url, [], "POST");
+        return $response;
+    }
+
+    /**
+     * Activates a webhook
+     * @param int $webhookId
+     */
+    public function activateWebhook($webhookId)
+    {
+        $url = $this->environment->getBaseUrl() .  "activateWebhook/" . $webhookId;
+        $response = $this->makeRequest($url, [], "POST");
+        return $response;
+    }
+
+    /**
+     * Deactivates a webhook
+     * @param int $webhookId
+     */
+    public function deactivateWebhook($webhookId)
+    {
+        $url = $this->environment->getBaseUrl() .  "deactivateWebhook/" . $webhookId;
+        $response = $this->makeRequest($url, [], "POST");
+        return $response;
+    }
+
     /**
      * Validate asset, blockchain and network combination
      * @param string $asset
@@ -208,7 +301,6 @@ class TelePayClient
             'AUTHORIZATION: ' . $this->environment->getClientSecret()
         ));
         if ($body) {
-            $verb = $verb == "GET" ? "POST" : $verb;
             curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($body));
         }
         curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $verb);
@@ -222,5 +314,20 @@ class TelePayClient
             throw new TelePayException(json_encode($response), $httpCode);
         }
         return $response;
+    }
+
+    /**
+     * Validate Webhooks signature
+     * @param string $data
+     * @param string $signature
+     * @return boolean
+     */
+    public function validateSignature($data, $signature)
+    {
+        $data = str_replace(["\"", "null"], ["'", "None"], $data);
+        $hashSecret = hash('sha1', $this->environment->getClientSecret());
+        $hashData = hash('sha512', utf8_encode($data));
+        $mySignature = hash('sha512', ($hashSecret . $hashData));
+        return $mySignature === $signature;
     }
 }

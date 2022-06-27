@@ -29,19 +29,6 @@ foreach ($wallets as $wallet) {
         ."\n";
 }
 
-$assetsResponse = $telepay->getAssets();
-$assets = $assetsResponse['assets'];
-echo "Assets: \n";
-foreach ($assets as $assetItem) {
-    $row = "Asset:  ".$assetItem['asset']
-        ." Blockchain: ".$assetItem['blockchain']
-        ." Networks: ";
-    foreach ($assetItem['networks'] as $networkItem) {
-        $row .= "$networkItem ";
-    }
-    echo $row."\n";
-}
-
 $invoicesResponse = $telepay->getInvoices();
 $invoices = $invoicesResponse['invoices'];
 echo "My invoices: \n";

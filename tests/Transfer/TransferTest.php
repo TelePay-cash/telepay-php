@@ -32,7 +32,7 @@ class TransferTest extends TestCase
 
         $this->assertNotNull($respTransfer);
         $this->assertArrayHasKey('success', $respTransfer);
-        $this->assertEquals(1, $respTransfer['success']);
+        $this->assertEquals("transfer.ok", $respTransfer['success']);
     }
 
     public function testTransferenceFail()

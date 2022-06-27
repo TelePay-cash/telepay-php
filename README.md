@@ -98,6 +98,7 @@ Array
 [Read docs](https://telepay.readme.io/reference/getbalance)
 
 **Get the assets**
+Get assets suported by TelePay. [Read docs](https://telepay.readme.io/reference/getassets)
 ```php
 $assets = $telepay->getAssets();
 print_r($assers);
@@ -125,7 +126,11 @@ Array
 
 )
 ```
-[Read docs](https://telepay.readme.io/reference/getassets)
+You can get the detail of a single asset. [Read docs](https://telepay.readme.io/reference/getasset)
+```php
+$asset = new TelePayAssetInput("TON", "TON", "mainnet");
+$assetDetail = $telepay->getAsset($asset);
+```
 
 **Create one invoice**
 ```php
@@ -298,6 +303,68 @@ Array
 (
     [success] => 1
 )
+```
+
+**View webhooks**
+Find many webhooks. [Read docs](https://telepay.readme.io/reference/getwebhooks)
+```php
+$webhooksResponse = $telepay->getWebhooks();
+```
+Find one webhook by Id. [Read docs](https://telepay.readme.io/reference/getwebhook)
+```php
+$webhookId = 325;
+$webhookResponse = $telepay->getWebhook($webhookId);
+```
+Response
+```php
+Array
+(
+    [id] => 325
+    [url] => https://www.example.com/webhook
+    [secret] => secret
+    [events] => Array
+        (
+            [0] => invoice.completed
+        )
+
+    [active] => 1
+)
+```
+
+**Create or update a webhook**
+For create a webhook is required the url, a secret and the events associated. [Read docs](https://telepay.readme.io/reference/createwebhook)
+```php
+$urlWebhook = "https://www.example.com/webhook";
+$secretWebhook = "secret";
+$eventsWebhook = [
+    TelePayEvents::INVOICE_COMPLETED
+];
+$webhookInput = new TelePayWebhookInput($urlWebhook, $secretWebhook, $eventsWebhook);
+
+$responseCreateWebhook = $telepay->createWebhook($webhookInput);
+print_r($responseCreateWebhook);
+```
+For update a webhook is required a webhookId and the new params. [Read docs](https://telepay.readme.io/reference/updatewebhook)
+```php
+$webhookId = 325;
+$responseUpdateWebhook = $telepay->updateWebhook($webhookId, $webhookInput);
+print_r($responseUpdateWebhook);
+```
+
+**Activate or deativate a webhook**
+```php
+$webhookId = 325;
+
+$telepay->activateWebhook($webhookId);
+
+$telepay->deactivateWebhook($webhookId);
+```
+
+**Delete a webhook**
+```php
+$webhookId = 325;
+
+$telepay->deleteWebhook($webhookId);
 ```
 
 ## Tests
