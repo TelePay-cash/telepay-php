@@ -114,6 +114,7 @@ Array
                 (
                     [asset] => TON
                     [blockchain] => TON
+                    [usd_price] => 1.050999999999999934
                     [url] => https://ton.org
                     [networks] => Array
                         (
@@ -121,6 +122,7 @@ Array
                             [1] => testnet
                         )
 
+                    [coingecko_id] => the-open-network
                 )
 
         )
@@ -153,12 +155,14 @@ Response
 ```php
 Array
 (
-    [number] => O5ZOJ15JXU
+    [number] => YJ1EJO9PLA
     [asset] => TON
     [blockchain] => TON
     [network] => mainnet
     [status] => pending
-    [amount] => 0.500000000000000000
+    [amount] => 2.000000000000000000
+    [amount_remaining] => 0.000000000000000000
+    [amount_real] => 0.000000000000000000
     [description] => Test using SDK TelePay PHP
     [metadata] => Array
         (
@@ -166,16 +170,15 @@ Array
             [other_metadata] => any value
         )
 
-    [checkout_url] => https://telepay.cash/checkout/O5ZOJ15JXU
-    [onchain_url] => ton://transfer/EQA5Pxp_EC9pTlxrvO59D1iqBqodajojullgf07ENKa22oSN?amount=500000000&text=O5ZOJ15JXU
+    [checkout_url] => https://telepay.cash/checkout/YJ1EJO9PLA
+    [onchain_url] => ton://transfer/UQDoFjaqMtuxkJV-caGiEdxMxjkTAWU9oskjpfAA1uwHbe4u?amount=2000000000
     [success_url] => https://www.example.com/payment_success?order_id=56
     [cancel_url] => https://www.example.com/payment_cancelled?order_id=56
     [explorer_url] => 
-    [expires_at] => 2022-05-19T08:43:38.802833Z
-    [created_at] => 2022-05-18T22:43:38.802925Z
+    [expires_at] => 2022-06-28T00:09:52.038782Z
+    [created_at] => 2022-06-27T14:09:52.038908Z
     [updated_at] => 
 )
-
 ```
 [Read docs](https://telepay.readme.io/reference/createinvoice)
 
@@ -201,27 +204,28 @@ Response
 ```php
 Array
 (
-    [number] => O5ZOJ15JXU
+    [number] => YJ1EJO9PLA
     [asset] => TON
     [blockchain] => TON
     [network] => mainnet
-    [status] => pending
-    [amount] => 0.500000000000000000
+    [status] => cancelled
+    [amount] => 2.000000000000000000
+    [amount_remaining] => 0.000000000000000000
+    [amount_real] => 0.000000000000000000
     [description] => Test using SDK TelePay PHP
     [metadata] => Array
         (
-            [my_reference_id] => 56
             [other_metadata] => any value
+            [my_reference_id] => 56
         )
-
-    [checkout_url] => https://telepay.cash/checkout/O5ZOJ15JXU
-    [onchain_url] => ton://transfer/EQA5Pxp_EC9pTlxrvO59D1iqBqodajojullgf07ENKa22oSN?amount=500000000&text=O5ZOJ15JXU
+    [checkout_url] => https://telepay.cash/checkout/YJ1EJO9PLA
+    [onchain_url] => 
     [success_url] => https://www.example.com/payment_success?order_id=56
     [cancel_url] => https://www.example.com/payment_cancelled?order_id=56
     [explorer_url] => 
-    [expires_at] => 2022-05-19T08:43:38.802833Z
-    [created_at] => 2022-05-18T22:43:38.802925Z
-    [updated_at] => 
+    [expires_at] => 2022-06-28T00:09:52.038782Z
+    [created_at] => 2022-06-27T14:09:52.038908Z
+    [updated_at] => 2022-06-27T14:09:53.205920Z
 )
 ```
 
