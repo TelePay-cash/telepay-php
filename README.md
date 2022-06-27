@@ -98,6 +98,7 @@ Array
 [Read docs](https://telepay.readme.io/reference/getbalance)
 
 **Get the assets**
+
 Get assets suported by TelePay. [Read docs](https://telepay.readme.io/reference/getassets)
 ```php
 $assets = $telepay->getAssets();
@@ -179,6 +180,7 @@ Array
 [Read docs](https://telepay.readme.io/reference/createinvoice)
 
 **View invoices**
+
 Find many invoices. [Read docs](https://telepay.readme.io/reference/getinvoices)
 ```php
 $invoicesResponse = $telepay->getInvoices();
@@ -306,6 +308,7 @@ Array
 ```
 
 **View webhooks**
+
 Find many webhooks. [Read docs](https://telepay.readme.io/reference/getwebhooks)
 ```php
 $webhooksResponse = $telepay->getWebhooks();
@@ -332,6 +335,7 @@ Array
 ```
 
 **Create or update a webhook**
+
 For create a webhook is required the url, a secret and the events associated. [Read docs](https://telepay.readme.io/reference/createwebhook)
 ```php
 $urlWebhook = "https://www.example.com/webhook";
